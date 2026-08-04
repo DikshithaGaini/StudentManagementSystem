@@ -26,4 +26,16 @@ public class StudentService {
             System.out.println("-------------------------");
         }
     }
+    // Search Student by ID
+    public Student searchStudent(int studentId) {
+
+    for (Student student : students) {
+
+        if (student.getStudentId() == studentId) {
+            return student;
+        }
+
+    }
+    return null;
+    }
 }

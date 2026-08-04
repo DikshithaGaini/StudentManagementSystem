@@ -18,7 +18,8 @@ public class Main {
             System.out.println("\n===== Student Management System =====");
             System.out.println("1. Add Student");
             System.out.println("2. View Students");
-            System.out.println("3. Exit");
+            System.out.println("3. Search Student");
+            System.out.println("4. Exit");
             System.out.print("Enter your choice: ");
 
             choice = sc.nextInt();
@@ -57,8 +58,21 @@ public class Main {
 
                 case 3:
 
-                    System.out.println("Thank you for using Student Management System!");
+                System.out.print("Enter Student ID to search: ");
+                int searchId = sc.nextInt();
 
+                Student foundStudent = service.searchStudent(searchId);
+
+                if (foundStudent != null) {
+                System.out.println("\nStudent Found");
+                System.out.println(foundStudent);
+                } else {
+                System.out.println("Student not found.");
+                }
+
+                break;
+                case 4:
+                    System.out.println("Thank you for using the Student Management System. Goodbye!");
                     break;
 
                 default:
@@ -67,7 +81,7 @@ public class Main {
 
             }
 
-        } while (choice != 3);
+        } while (choice != 4);
 
         sc.close();
 
