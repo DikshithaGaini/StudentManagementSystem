@@ -19,7 +19,8 @@ public class Main {
             System.out.println("1. Add Student");
             System.out.println("2. View Students");
             System.out.println("3. Search Student");
-            System.out.println("4. Exit");
+            System.out.println("4. Update Student");
+            System.out.println("5. Exit");
             System.out.print("Enter your choice: ");
 
             choice = sc.nextInt();
@@ -58,21 +59,52 @@ public class Main {
 
                 case 3:
 
-                System.out.print("Enter Student ID to search: ");
-                int searchId = sc.nextInt();
+                    System.out.print("Enter Student ID to search: ");
+                    int searchId = sc.nextInt();
 
-                Student foundStudent = service.searchStudent(searchId);
+                    Student foundStudent = service.searchStudent(searchId);
 
-                if (foundStudent != null) {
-                System.out.println("\nStudent Found");
-                System.out.println(foundStudent);
-                } else {
-                System.out.println("Student not found.");
-                }
+                    if (foundStudent != null) {
+                        System.out.println("\nStudent Found");
+                        System.out.println(foundStudent);
+                    } else {
+                        System.out.println("Student not found.");
+                    }
 
-                break;
+                    break;
+
                 case 4:
+
+                    System.out.print("Enter Student ID to update: ");
+                    int updateId = sc.nextInt();
+                    sc.nextLine();
+
+                    System.out.print("Enter New Student Name: ");
+                    String newName = sc.nextLine();
+
+                    System.out.print("Enter New Department: ");
+                    String newDepartment = sc.nextLine();
+
+                    System.out.print("Enter New Year: ");
+                    int newYear = sc.nextInt();
+
+                    System.out.print("Enter New CGPA: ");
+                    double newCgpa = sc.nextDouble();
+
+                    boolean updated = service.updateStudent(updateId, newName, newDepartment, newYear, newCgpa);
+
+                    if (updated) {
+                        System.out.println("Student updated successfully!");
+                    } else {
+                        System.out.println("Student not found!");
+                    }
+
+                    break;
+
+                case 5:
+
                     System.out.println("Thank you for using the Student Management System. Goodbye!");
+
                     break;
 
                 default:
@@ -81,10 +113,8 @@ public class Main {
 
             }
 
-        } while (choice != 4);
+        } while (choice != 5);
 
         sc.close();
-
     }
-
 }

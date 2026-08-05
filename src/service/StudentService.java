@@ -26,16 +26,34 @@ public class StudentService {
             System.out.println("-------------------------");
         }
     }
+
     // Search Student by ID
     public Student searchStudent(int studentId) {
 
-    for (Student student : students) {
+        for (Student student : students) {
 
-        if (student.getStudentId() == studentId) {
-            return student;
+            if (student.getStudentId() == studentId) {
+                return student;
+            }
+
         }
 
+        return null;
     }
-    return null;
+
+    // Update Student
+    public boolean updateStudent(int studentId, String name, String department, int year, double cgpa) {
+
+        Student student = searchStudent(studentId);
+
+        if (student != null) {
+            student.setStudentName(name);
+            student.setDepartment(department);
+            student.setYear(year);
+            student.setCgpa(cgpa);
+            return true;
+        }
+
+        return false;
     }
 }
