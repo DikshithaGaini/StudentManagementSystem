@@ -56,4 +56,16 @@ public class StudentService {
 
         return false;
     }
+    // Delete Student
+public boolean deleteStudent(int studentId) {
+
+    Student student = searchStudent(studentId);
+
+    if (student != null) {
+        students.remove(student);
+        return true;
+    }
+
+    return false;
+}
 }

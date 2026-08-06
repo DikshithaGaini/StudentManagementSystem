@@ -15,13 +15,14 @@ public class Main {
 
         do {
 
-            System.out.println("\n===== Student Management System =====");
-            System.out.println("1. Add Student");
-            System.out.println("2. View Students");
-            System.out.println("3. Search Student");
-            System.out.println("4. Update Student");
-            System.out.println("5. Exit");
-            System.out.print("Enter your choice: ");
+            System.out.println("===== Student Management System =====");
+System.out.println("1. Add Student");
+System.out.println("2. View Students");
+System.out.println("3. Search Student");
+System.out.println("4. Update Student");
+System.out.println("5. Delete Student");
+System.out.println("6. Exit");
+System.out.print("Enter your choice: ");
 
             choice = sc.nextInt();
 
@@ -100,8 +101,22 @@ public class Main {
                     }
 
                     break;
+                    case 5:
 
-                case 5:
+    System.out.print("Enter Student ID to delete: ");
+    int deleteId = sc.nextInt();
+
+    boolean deleted = service.deleteStudent(deleteId);
+
+    if (deleted) {
+        System.out.println("Student deleted successfully!");
+    } else {
+        System.out.println("Student not found!");
+    }
+
+    break;
+
+                case 6:
 
                     System.out.println("Thank you for using the Student Management System. Goodbye!");
 
@@ -113,7 +128,7 @@ public class Main {
 
             }
 
-        } while (choice != 5);
+        } while (choice != 6);
 
         sc.close();
     }
