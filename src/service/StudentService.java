@@ -5,23 +5,21 @@ import model.Student;
 
 public class StudentService {
 
-    private ArrayList<Student> students = new ArrayList<>();
+    private ArrayList<Student> studentList = new ArrayList<>();
 
     // Add Student
     public void addStudent(Student student) {
-        students.add(student);
-        System.out.println("Student added successfully!");
+        studentList.add(student);
     }
 
     // Display All Students
     public void displayStudents() {
-
-        if (students.isEmpty()) {
-            System.out.println("No student records found.");
+        if (studentList.isEmpty()) {
+            System.out.println("No students found.");
             return;
         }
 
-        for (Student student : students) {
+        for (Student student : studentList) {
             System.out.println(student);
             System.out.println("-------------------------");
         }
@@ -29,25 +27,22 @@ public class StudentService {
 
     // Search Student by ID
     public Student searchStudent(int studentId) {
-
-        for (Student student : students) {
-
+        for (Student student : studentList) {
             if (student.getStudentId() == studentId) {
                 return student;
             }
-
         }
-
         return null;
     }
 
     // Update Student
-    public boolean updateStudent(int studentId, String name, String department, int year, double cgpa) {
+    public boolean updateStudent(int studentId, String studentName,
+                                 String department, int year, double cgpa) {
 
         Student student = searchStudent(studentId);
 
         if (student != null) {
-            student.setStudentName(name);
+            student.setStudentName(studentName);
             student.setDepartment(department);
             student.setYear(year);
             student.setCgpa(cgpa);
@@ -56,16 +51,22 @@ public class StudentService {
 
         return false;
     }
+
     // Delete Student
-public boolean deleteStudent(int studentId) {
+    public boolean deleteStudent(int studentId) {
 
-    Student student = searchStudent(studentId);
+        Student student = searchStudent(studentId);
 
-    if (student != null) {
-        students.remove(student);
-        return true;
+        if (student != null) {
+            studentList.remove(student);
+            return true;
+        }
+
+        return false;
     }
 
-    return false;
-}
+    // Check if Student ID already exists
+    public boolean idExists(int studentId) {
+        return searchStudent(studentId) != null;
+    }
 }

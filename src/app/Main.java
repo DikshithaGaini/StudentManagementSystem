@@ -1,6 +1,8 @@
 package app;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
+
 import model.Student;
 import service.StudentService;
 
@@ -11,125 +13,171 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         StudentService service = new StudentService();
 
-        int choice;
+        while (true) {
 
-        do {
+            try {
 
-            System.out.println("===== Student Management System =====");
-System.out.println("1. Add Student");
-System.out.println("2. View Students");
-System.out.println("3. Search Student");
-System.out.println("4. Update Student");
-System.out.println("5. Delete Student");
-System.out.println("6. Exit");
-System.out.print("Enter your choice: ");
+                System.out.println("\n========== STUDENT MANAGEMENT SYSTEM ==========");
+                System.out.println("1. Add Student");
+                System.out.println("2. Display Students");
+                System.out.println("3. Search Student");
+                System.out.println("4. Update Student");
+                System.out.println("5. Delete Student");
+                System.out.println("6. Exit");
+                System.out.print("Enter your choice: ");
 
-            choice = sc.nextInt();
+                int choice = sc.nextInt();
 
-            switch (choice) {
+                switch (choice) {
 
-                case 1:
+                    case 1:
 
-                    System.out.print("Enter Student ID: ");
-                    int id = sc.nextInt();
-                    sc.nextLine();
+                        System.out.print("Enter Student ID: ");
+                        int id = sc.nextInt();
 
-                    System.out.print("Enter Student Name: ");
-                    String name = sc.nextLine();
+                        if (id <= 0) {
+                            System.out.println("Student ID must be positive.");
+                            break;
+                        }
 
-                    System.out.print("Enter Department: ");
-                    String department = sc.nextLine();
+                        if (service.idExists(id)) {
+                            System.out.println("Student ID already exists.");
+                            break;
+                        }
 
-                    System.out.print("Enter Year: ");
-                    int year = sc.nextInt();
+                        sc.nextLine();
 
-                    System.out.print("Enter CGPA: ");
-                    double cgpa = sc.nextDouble();
+                        System.out.print("Enter Student Name: ");
+                        String name = sc.nextLine();
 
-                    Student student = new Student(id, name, department, year, cgpa);
+                        if (name.trim().isEmpty()) {
+                            System.out.println("Name cannot be empty.");
+                            break;
+                        }
 
-                    service.addStudent(student);
+                        System.out.print("Enter Department: ");
+                        String department = sc.nextLine();
 
-                    break;
+                        if (department.trim().isEmpty()) {
+                            System.out.println("Department cannot be empty.");
+                            break;
+                        }
 
-                case 2:
+                        System.out.print("Enter Year (1-4): ");
+                        int year = sc.nextInt();
 
-                    service.displayStudents();
+                        if (year < 1 || year > 4) {
+                            System.out.println("Invalid Year.");
+                            break;
+                        }
 
-                    break;
+                        System.out.print("Enter CGPA (0-10): ");
+                        double cgpa = sc.nextDouble();
 
-                case 3:
+                        if (cgpa < 0 || cgpa > 10) {
+                            System.out.println("Invalid CGPA.");
+                            break;
+                        }
 
-                    System.out.print("Enter Student ID to search: ");
-                    int searchId = sc.nextInt();
+                        Student student = new Student(id, name, department, year, cgpa);
+                        service.addStudent(student);
 
-                    Student foundStudent = service.searchStudent(searchId);
+                        System.out.println("Student Added Successfully.");
+                        break;
 
-                    if (foundStudent != null) {
-                        System.out.println("\nStudent Found");
-                        System.out.println(foundStudent);
-                    } else {
-                        System.out.println("Student not found.");
-                    }
+                    case 2:
 
-                    break;
+                        service.displayStudents();
+                        break;
 
-                case 4:
+                    case 3:
 
-                    System.out.print("Enter Student ID to update: ");
-                    int updateId = sc.nextInt();
-                    sc.nextLine();
+                        System.out.print("Enter Student ID: ");
+                        int searchId = sc.nextInt();
 
-                    System.out.print("Enter New Student Name: ");
-                    String newName = sc.nextLine();
+                        Student found = service.searchStudent(searchId);
 
-                    System.out.print("Enter New Department: ");
-                    String newDepartment = sc.nextLine();
+                        if (found != null) {
+                            System.out.println("\nStudent Found:");
+                            System.out.println(found);
+                        } else {
+                            System.out.println("Student Not Found.");
+                        }
 
-                    System.out.print("Enter New Year: ");
-                    int newYear = sc.nextInt();
+                        break;
 
-                    System.out.print("Enter New CGPA: ");
-                    double newCgpa = sc.nextDouble();
+                    case 4:
 
-                    boolean updated = service.updateStudent(updateId, newName, newDepartment, newYear, newCgpa);
+                        System.out.print("Enter Student ID to Update: ");
+                        int updateId = sc.nextInt();
 
-                    if (updated) {
-                        System.out.println("Student updated successfully!");
-                    } else {
-                        System.out.println("Student not found!");
-                    }
+                        Student updateStudent = service.searchStudent(updateId);
 
-                    break;
+                        if (updateStudent == null) {
+                            System.out.println("Student Not Found.");
+                            break;
+                        }
+
+                        sc.nextLine();
+
+                        System.out.print("Enter New Name: ");
+                        String newName = sc.nextLine();
+
+                        System.out.print("Enter New Department: ");
+                        String newDepartment = sc.nextLine();
+
+                        System.out.print("Enter New Year: ");
+                        int newYear = sc.nextInt();
+
+                        System.out.print("Enter New CGPA: ");
+                        double newCgpa = sc.nextDouble();
+
+                        boolean updated = service.updateStudent(updateId, newName, newDepartment, newYear, newCgpa);
+
+                        if (updated) {
+                            System.out.println("Student Updated Successfully.");
+                        } else {
+                            System.out.println("Update Failed.");
+                        }
+
+                        break;
+
                     case 5:
 
-    System.out.print("Enter Student ID to delete: ");
-    int deleteId = sc.nextInt();
+                        System.out.print("Enter Student ID to Delete: ");
+                        int deleteId = sc.nextInt();
 
-    boolean deleted = service.deleteStudent(deleteId);
+                        boolean deleted = service.deleteStudent(deleteId);
 
-    if (deleted) {
-        System.out.println("Student deleted successfully!");
-    } else {
-        System.out.println("Student not found!");
-    }
+                        if (deleted) {
+                            System.out.println("Student Deleted Successfully.");
+                        } else {
+                            System.out.println("Student Not Found.");
+                        }
 
-    break;
+                        break;
 
-                case 6:
+                    case 6:
 
-                    System.out.println("Thank you for using the Student Management System. Goodbye!");
+                        System.out.println("Thank You!");
+                        sc.close();
+                        System.exit(0);
 
-                    break;
+                    default:
 
-                default:
+                        System.out.println("Invalid Choice.");
 
-                    System.out.println("Invalid Choice!");
+                }
+
+            } catch (InputMismatchException e) {
+
+                System.out.println("Invalid Input! Please enter the correct data type.");
+                sc.nextLine();
 
             }
 
-        } while (choice != 6);
+        }
 
-        sc.close();
     }
+
 }
