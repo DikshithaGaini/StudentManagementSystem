@@ -8,12 +8,19 @@ public class StudentService {
     private ArrayList<Student> studentList = new ArrayList<>();
 
     // Add Student
-    public void addStudent(Student student) {
+    public boolean addStudent(Student student) {
+
+        if (idExists(student.getStudentId())) {
+            return false;
+        }
+
         studentList.add(student);
+        return true;
     }
 
     // Display All Students
     public void displayStudents() {
+
         if (studentList.isEmpty()) {
             System.out.println("No students found.");
             return;
@@ -27,11 +34,14 @@ public class StudentService {
 
     // Search Student by ID
     public Student searchStudent(int studentId) {
+
         for (Student student : studentList) {
+
             if (student.getStudentId() == studentId) {
                 return student;
             }
         }
+
         return null;
     }
 
@@ -42,10 +52,12 @@ public class StudentService {
         Student student = searchStudent(studentId);
 
         if (student != null) {
+
             student.setStudentName(studentName);
             student.setDepartment(department);
             student.setYear(year);
             student.setCgpa(cgpa);
+
             return true;
         }
 
@@ -69,10 +81,14 @@ public class StudentService {
     public boolean idExists(int studentId) {
         return searchStudent(studentId) != null;
     }
+
+    // Validate Year
     public boolean isValidYear(int year) {
-    return year >= 1 && year <= 4;
-}
-public boolean isValidCgpa(double cgpa) {
-    return cgpa >= 0 && cgpa <= 10;
-}
+        return year >= 1 && year <= 4;
+    }
+
+    // Validate CGPA
+    public boolean isValidCgpa(double cgpa) {
+        return cgpa >= 0 && cgpa <= 10;
+    }
 }
