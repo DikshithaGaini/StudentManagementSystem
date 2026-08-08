@@ -30,6 +30,7 @@ public class Main {
 
                 switch (choice) {
 
+                    // ================= ADD STUDENT =================
                     case 1:
 
                         System.out.print("Enter Student ID: ");
@@ -66,30 +67,53 @@ public class Main {
                         System.out.print("Enter Year (1-4): ");
                         int year = sc.nextInt();
 
-                        if (year < 1 || year > 4) {
-                            System.out.println("Invalid Year.");
+                        if (!service.isValidYear(year)) {
+                            System.out.println(
+                                    "Invalid year! Year must be between 1 and 4."
+                            );
                             break;
                         }
 
                         System.out.print("Enter CGPA (0-10): ");
                         double cgpa = sc.nextDouble();
 
-                        if (cgpa < 0 || cgpa > 10) {
-                            System.out.println("Invalid CGPA.");
+                        if (!service.isValidCgpa(cgpa)) {
+                            System.out.println(
+                                    "Invalid CGPA! CGPA must be between 0 and 10."
+                            );
                             break;
                         }
 
-                        Student student = new Student(id, name, department, year, cgpa);
-                        service.addStudent(student);
+                        Student student = new Student(
+                                id,
+                                name,
+                                department,
+                                year,
+                                cgpa
+                        );
 
-                        System.out.println("Student Added Successfully.");
+                        boolean added = service.addStudent(student);
+
+                        if (added) {
+                            System.out.println(
+                                    "Student Added Successfully."
+                            );
+                        } else {
+                            System.out.println(
+                                    "Student ID already exists."
+                            );
+                        }
+
                         break;
 
+                    // ================= DISPLAY STUDENTS =================
                     case 2:
 
                         service.displayStudents();
+
                         break;
 
+                    // ================= SEARCH STUDENT =================
                     case 3:
 
                         System.out.print("Enter Student ID: ");
@@ -106,12 +130,14 @@ public class Main {
 
                         break;
 
+                    // ================= UPDATE STUDENT =================
                     case 4:
 
                         System.out.print("Enter Student ID to Update: ");
                         int updateId = sc.nextInt();
 
-                        Student updateStudent = service.searchStudent(updateId);
+                        Student updateStudent =
+                                service.searchStudent(updateId);
 
                         if (updateStudent == null) {
                             System.out.println("Student Not Found.");
@@ -123,61 +149,104 @@ public class Main {
                         System.out.print("Enter New Name: ");
                         String newName = sc.nextLine();
 
+                        if (newName.trim().isEmpty()) {
+                            System.out.println("Name cannot be empty.");
+                            break;
+                        }
+
                         System.out.print("Enter New Department: ");
                         String newDepartment = sc.nextLine();
 
-                        System.out.print("Enter New Year: ");
+                        if (newDepartment.trim().isEmpty()) {
+                            System.out.println(
+                                    "Department cannot be empty."
+                            );
+                            break;
+                        }
+
+                        System.out.print("Enter New Year (1-4): ");
                         int newYear = sc.nextInt();
 
-                        System.out.print("Enter New CGPA: ");
+                        if (!service.isValidYear(newYear)) {
+                            System.out.println(
+                                    "Invalid year! Year must be between 1 and 4."
+                            );
+                            break;
+                        }
+
+                        System.out.print("Enter New CGPA (0-10): ");
                         double newCgpa = sc.nextDouble();
 
-                        boolean updated = service.updateStudent(updateId, newName, newDepartment, newYear, newCgpa);
+                        if (!service.isValidCgpa(newCgpa)) {
+                            System.out.println(
+                                    "Invalid CGPA! CGPA must be between 0 and 10."
+                            );
+                            break;
+                        }
+
+                        boolean updated = service.updateStudent(
+                                updateId,
+                                newName,
+                                newDepartment,
+                                newYear,
+                                newCgpa
+                        );
 
                         if (updated) {
-                            System.out.println("Student Updated Successfully.");
+                            System.out.println(
+                                    "Student Updated Successfully."
+                            );
                         } else {
                             System.out.println("Update Failed.");
                         }
 
                         break;
 
+                    // ================= DELETE STUDENT =================
                     case 5:
 
                         System.out.print("Enter Student ID to Delete: ");
                         int deleteId = sc.nextInt();
 
-                        boolean deleted = service.deleteStudent(deleteId);
+                        boolean deleted =
+                                service.deleteStudent(deleteId);
 
                         if (deleted) {
-                            System.out.println("Student Deleted Successfully.");
+                            System.out.println(
+                                    "Student Deleted Successfully."
+                            );
                         } else {
                             System.out.println("Student Not Found.");
                         }
 
                         break;
 
+                    // ================= EXIT =================
                     case 6:
 
-                        System.out.println("Thank You!");
-                        sc.close();
-                        System.exit(0);
+                        System.out.println(
+                                "Thank You for using Student Management System!"
+                        );
 
+                        sc.close();
+                        return;
+
+                    // ================= INVALID CHOICE =================
                     default:
 
-                        System.out.println("Invalid Choice.");
-
+                        System.out.println(
+                                "Invalid Choice! Please choose between 1 and 6."
+                        );
                 }
 
             } catch (InputMismatchException e) {
 
-                System.out.println("Invalid Input! Please enter the correct data type.");
+                System.out.println(
+                        "Invalid Input! Please enter the correct data type."
+                );
+
                 sc.nextLine();
-
             }
-
         }
-
     }
-
 }

@@ -69,4 +69,10 @@ public class StudentService {
     public boolean idExists(int studentId) {
         return searchStudent(studentId) != null;
     }
+    public boolean isValidYear(int year) {
+    return year >= 1 && year <= 4;
+}
+public boolean isValidCgpa(double cgpa) {
+    return cgpa >= 0 && cgpa <= 10;
+}
 }
