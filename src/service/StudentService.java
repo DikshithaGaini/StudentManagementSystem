@@ -1,11 +1,18 @@
 package service;
 
 import java.util.ArrayList;
+
 import model.Student;
+import util.FileUtil;
 
 public class StudentService {
 
-    private ArrayList<Student> studentList = new ArrayList<>();
+    private ArrayList<Student> studentList;
+
+    // Constructor
+    public StudentService() {
+        studentList = FileUtil.loadStudents();
+    }
 
     // Add Student
     public boolean addStudent(Student student) {
@@ -15,6 +22,8 @@ public class StudentService {
         }
 
         studentList.add(student);
+        FileUtil.saveStudents(studentList);
+
         return true;
     }
 
@@ -46,8 +55,11 @@ public class StudentService {
     }
 
     // Update Student
-    public boolean updateStudent(int studentId, String studentName,
-                                 String department, int year, double cgpa) {
+    public boolean updateStudent(int studentId,
+                                 String studentName,
+                                 String department,
+                                 int year,
+                                 double cgpa) {
 
         Student student = searchStudent(studentId);
 
@@ -57,6 +69,8 @@ public class StudentService {
             student.setDepartment(department);
             student.setYear(year);
             student.setCgpa(cgpa);
+
+            FileUtil.saveStudents(studentList);
 
             return true;
         }
@@ -70,7 +84,10 @@ public class StudentService {
         Student student = searchStudent(studentId);
 
         if (student != null) {
+
             studentList.remove(student);
+            FileUtil.saveStudents(studentList);
+
             return true;
         }
 
