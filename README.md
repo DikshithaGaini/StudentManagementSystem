@@ -170,3 +170,8 @@ StudentManagementSystem
 ├── screenshots
 ├── README.md
 └── .gitignore
+## 📌 Latest Progress
+
+- Implemented file handling using Java Serialization
+- Added persistent student data storage
+- Student records now remain available after restarting the application
