@@ -1,194 +1,167 @@
-# Student Management System
+# Student Management System - README
 
-A Java-based Student Management System developed using Core Java, OOP, Collections, Exception Handling, File Handling, and JDBC with MySQL.
+## Student Management System
 
-## 🚀 Project Status
-
-🚧 Currently in Development
+A simple Java-based Student Management System that helps manage student records efficiently. This project allows users to add, view, search, update, and delete student information using a menu-driven interface.
 
 ---
 
-## 🛠️ Technologies Used
+## Features
 
-- Java
-- Object-Oriented Programming (OOP)
-- ArrayList / Collections
-- Exception Handling
-- File Handling
-- JDBC
-- MySQL
-- Git & GitHub
-
----
-
-## ✨ Features
-
-### Completed
-- [x] Project Setup
-- [x] Student Model
-- [x] Add Student
-- [x] Display Students
-- [x] Search Student
-- [x] Update Student
-- [x] Delete Student
-- [x] Duplicate Student ID Validation
-- [x] Year Validation
-- [x] CGPA Validation
-- [x] Input Validation & Exception Handling
-
-### Upcoming
-- [ ] File Handling
-- [ ] Save Student Data
-- [ ] Load Student Data
-- [ ] MySQL Database
-- [ ] JDBC Integration
-- [ ] Admin Login
-- [ ] Attendance Management
-- [ ] Marks Management
-- [ ] Reports
-- [ ] Final UI / Application Improvements
+* Add a student
+* View all students
+* Search for a student
+* Update student details
+* Delete a student record
+* Menu-driven console application
+* Object-Oriented Programming implementation
 
 ---
 
-# 📅 Daily Development Progress
+## Technologies Used
 
-## Day 1 — Project Setup
-**Date:** August 1, 2026
-
-### Completed
-- Created Java project
-- Created package structure
-- Created GitHub repository
-- Connected local project with GitHub
-- Configured Git
-
-### Packages Created
-- `app`
-- `model`
-- `service`
-- `dao`
-- `util`
-- `exception`
-
-### Git Commit
-`Initial project setup`
+* Java
+* OOP Concepts
+* Collections Framework
+* VS Code
+* Git and GitHub
 
 ---
 
-## Day 2 — Basic Student Management
-**Date:** August 3, 2026
-
-### Completed
-- Created `Student` model
-- Added student fields
-- Added constructors
-- Added getters and setters
-- Added `toString()`
-- Created `StudentService`
-- Implemented Add Student
-- Implemented Display Students
-- Implemented Search Student
-- Implemented Update Student
-- Implemented Delete Student
-
-### Concepts Learned
-- Classes and Objects
-- Encapsulation
-- Constructors
-- Methods
-- ArrayList
-- For-each loop
-- CRUD operations
-
-### Git Commit
-`Implement basic student management system`
-
----
-
-## Day 3 — Validation & Exception Handling
-**Date:** August 8, 2026
-
-### Completed
-- Duplicate Student ID validation
-- Student ID validation
-- Year validation
-- CGPA validation
-- Empty name validation
-- Empty department validation
-- InputMismatchException handling
-- Improved update validation
-
-### Concepts Learned
-- Exception Handling
-- `try-catch`
-- `InputMismatchException`
-- Input validation
-- Boolean methods
-- Code reuse
-
-### Git Commit
-`Add input validation and exception handling`
-
----
-
-# 📊 Development Tracker
-
-| Day | Date | Main Work | Status |
-|---|---|---|---|
-| 1 | Aug 1 | Project Setup | ✅ |
-| 2 | Aug 3 | CRUD Operations | ✅ |
-| 3 | Aug 8 | Validation & Exception Handling | 🚧 |
-| 4 | TBD | File Handling | ⏳ |
-| 5 | TBD | File Persistence | ⏳ |
-| 6 | TBD | MySQL Database | ⏳ |
-| 7 | TBD | JDBC Integration | ⏳ |
-| 8 | TBD | Admin Login | ⏳ |
-| 9 | TBD | Attendance & Marks | ⏳ |
-| 10 | TBD | Final Testing & Documentation | ⏳ |
-
----
-
-# 📂 Project Structure
+## Project Structure
 
 ```text
-StudentManagementSystem
+Student-Management-System/
 │
-├── src
-│   ├── app
-│   │   └── Main.java
-│   │
-│   ├── model
-│   │   └── Student.java
-│   │
-│   ├── service
-│   │   └── StudentService.java
-│   │
-│   ├── dao
-│   ├── util
-│   └── exception
-│
-├── screenshots
-├── README.md
-└── .gitignore
-## 📌 Latest Progress
+├── Student.java
+├── StudentManagement.java
+├── Main.java
+└── README.md
+```
 
-- Implemented file handling using Java Serialization
-- Added persistent student data storage
-- Student records now remain available after restarting the application
-## 📸 Project Screenshots
+---
 
-### Add Student
+## Concepts Used
 
-![Add Student](screenshots/add-student.png)
+* Classes and Objects
+* Encapsulation
+* Constructors
+* Methods
+* ArrayList
+* Loops
+* Conditional Statements
+* Exception Handling
 
-### Search Student
+---
 
-![Search Student](screenshots/search-student.png)
+## How to Run the Project
 
-### Update Student
+1. Clone the repository.
 
-![Update Student](screenshots/update-student.png)
+```bash
+git clone <repository-url>
+```
 
-### Delete Student
+2. Open the project in VS Code.
 
-![Delete Student](screenshots/delete-student.png)
+3. Compile the program.
+
+```bash
+javac *.java
+```
+
+4. Run the program.
+
+```bash
+java Main
+```
+
+---
+
+## Sample Output
+
+```text
+===== Student Management System =====
+
+1. Add Student
+2. View Students
+3. Search Student
+4. Update Student
+5. Delete Student
+6. Exit
+
+Enter your choice:
+```
+
+---
+
+## Daily Progress Tracker
+
+### Day 1
+
+**Work Completed**
+
+* Created the project structure
+* Created the Student class
+* Added student attributes
+
+**Concepts Learned**
+
+* Classes
+* Objects
+* Constructors
+
+**Next Steps**
+
+* Implement the Add Student feature
+
+---
+
+### Day 2
+
+**Work Completed**
+
+* Implemented the Add Student feature
+* Added a menu-driven interface
+
+**Concepts Learned**
+
+* Methods
+* User input using Scanner
+
+**Next Steps**
+
+* Implement View Student functionality
+
+---
+
+### Day 3
+
+**Work Completed**
+
+* Implemented the View Student feature
+
+**Concepts Learned**
+
+* ArrayList
+* Enhanced for loop
+
+**Next Steps**
+
+* Implement Search Student functionality
+
+---
+
+## Future Improvements
+
+* Database integration using MySQL
+* GUI implementation using JavaFX
+* Student attendance management
+* Student result management
+* Export student data
+
+---
+
+## Author
+
+**Dikshitha Gaini**
