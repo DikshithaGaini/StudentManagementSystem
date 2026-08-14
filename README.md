@@ -162,6 +162,3 @@ Enter your choice:
 
 ---
 
-## Author
-
-**Dikshitha Gaini**
