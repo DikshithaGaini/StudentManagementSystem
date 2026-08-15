@@ -23,7 +23,8 @@ public class Main {
                 System.out.println("3. Search Student");
                 System.out.println("4. Update Student");
                 System.out.println("5. Delete Student");
-                System.out.println("6. Exit");
+                System.out.println("6. Total Students");
+                System.out.println("7. Exit");
                 System.out.print("Enter your choice: ");
 
                 int choice = sc.nextInt();
@@ -220,9 +221,13 @@ public class Main {
                         }
 
                         break;
+                        case 6:
+
+                         System.out.println("Total Students: "+ service.getStudentCount());
+                        break;
 
                     // ================= EXIT =================
-                    case 6:
+                    case 7:
 
                         System.out.println(
                                 "Thank You for using Student Management System!"
@@ -235,7 +240,7 @@ public class Main {
                     default:
 
                         System.out.println(
-                                "Invalid Choice! Please choose between 1 and 6."
+                                "Invalid Choice! Please choose between 1 and 7."
                         );
                 }
 

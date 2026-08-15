@@ -108,4 +108,7 @@ public class StudentService {
     public boolean isValidCgpa(double cgpa) {
         return cgpa >= 0 && cgpa <= 10;
     }
+    public int getStudentCount() {
+    return studentList.size();
+}
 }

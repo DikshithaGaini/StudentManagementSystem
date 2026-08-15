@@ -161,4 +161,18 @@ Enter your choice:
 * Export student data
 
 ---
+## Day 4 — Student Statistics
 
+**Date:** August 15, 2026
+
+### Completed
+
+- Added Total Students feature
+- Improved the menu
+- Added student statistics
+
+### Concepts Learned
+
+- `ArrayList.size()`
+- Returning values from methods
+- `int` return type
