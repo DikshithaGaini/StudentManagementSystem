@@ -111,4 +111,16 @@ public class StudentService {
     public int getStudentCount() {
     return studentList.size();
 }
+public void sortStudentsByCgpa() {
+
+    if (studentList.isEmpty()) {
+        System.out.println("No students found.");
+        return;
+    }
+
+    studentList.sort((s1, s2) ->
+            Double.compare(s2.getCgpa(), s1.getCgpa()));
+
+    displayStudents();
+}
 }

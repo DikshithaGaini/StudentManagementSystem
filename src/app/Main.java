@@ -24,7 +24,8 @@ public class Main {
                 System.out.println("4. Update Student");
                 System.out.println("5. Delete Student");
                 System.out.println("6. Total Students");
-                System.out.println("7. Exit");
+                System.out.println("7. Sort Students by CGPA");
+                System.out.println("8. Exit");
                 System.out.print("Enter your choice: ");
 
                 int choice = sc.nextInt();
@@ -229,12 +230,18 @@ public class Main {
                     // ================= EXIT =================
                     case 7:
 
+                    service.sortStudentsByCgpa();
+
+                    break;
+                    case 8:
+
                         System.out.println(
                                 "Thank You for using Student Management System!"
                         );
 
                         sc.close();
                         return;
+                    
 
                     // ================= INVALID CHOICE =================
                     default:
