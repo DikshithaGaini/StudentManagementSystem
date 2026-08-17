@@ -123,4 +123,24 @@ public void sortStudentsByCgpa() {
 
     displayStudents();
 }
+public void filterByDepartment(String department) {
+
+    boolean found = false;
+
+    for (Student student : studentList) {
+
+        if (student.getDepartment()
+                .equalsIgnoreCase(department)) {
+
+            System.out.println(student);
+            System.out.println("-------------------------");
+
+            found = true;
+        }
+    }
+
+    if (!found) {
+        System.out.println("No students found.");
+    }
+}
 }

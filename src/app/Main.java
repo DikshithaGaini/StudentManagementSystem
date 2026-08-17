@@ -25,7 +25,8 @@ public class Main {
                 System.out.println("5. Delete Student");
                 System.out.println("6. Total Students");
                 System.out.println("7. Sort Students by CGPA");
-                System.out.println("8. Exit");
+                System.out.println("8. Filter Students by Department");
+                System.out.println("9. Exit");
                 System.out.print("Enter your choice: ");
 
                 int choice = sc.nextInt();
@@ -234,6 +235,17 @@ public class Main {
 
                     break;
                     case 8:
+
+    sc.nextLine();
+
+    System.out.print("Enter Department: ");
+
+    String dept = sc.nextLine();
+
+    service.filterByDepartment(dept);
+
+    break;
+                    case 9:
 
                         System.out.println(
                                 "Thank You for using Student Management System!"
