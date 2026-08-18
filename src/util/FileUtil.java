@@ -1,6 +1,10 @@
 package util;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import model.Student;
@@ -9,43 +13,53 @@ public class FileUtil {
 
     private static final String FILE_NAME = "students.dat";
 
-    // Save students to file
+    // Save students to a file
     public static void saveStudents(ArrayList<Student> students) {
 
-        try (ObjectOutputStream outputStream =
-                     new ObjectOutputStream(
-                             new FileOutputStream(FILE_NAME))) {
+        try {
 
-            outputStream.writeObject(students);
+            ObjectOutputStream output =
+                    new ObjectOutputStream(
+                            new FileOutputStream(FILE_NAME));
 
-            System.out.println("Student data saved successfully.");
+            output.writeObject(students);
 
-        } catch (IOException e) {
+            output.close();
 
-            System.out.println("Error saving student data.");
-            e.printStackTrace();
+            System.out.println("Data saved successfully.");
+
+        } catch (Exception e) {
+
+            System.out.println("Error while saving data.");
         }
     }
 
-    // Load students from file
+    // Load students from a file
     @SuppressWarnings("unchecked")
     public static ArrayList<Student> loadStudents() {
 
-        File file = new File(FILE_NAME);
+        try {
 
-        if (!file.exists()) {
-            return new ArrayList<>();
-        }
+            File file = new File(FILE_NAME);
 
-        try (ObjectInputStream inputStream =
-                     new ObjectInputStream(
-                             new FileInputStream(FILE_NAME))) {
+            if (!file.exists()) {
 
-            return (ArrayList<Student>) inputStream.readObject();
+                return new ArrayList<>();
+            }
 
-        } catch (IOException | ClassNotFoundException e) {
+            ObjectInputStream input =
+                    new ObjectInputStream(
+                            new FileInputStream(FILE_NAME));
 
-            System.out.println("Error loading student data.");
+            ArrayList<Student> students =
+                    (ArrayList<Student>) input.readObject();
+
+            input.close();
+
+            return students;
+
+        } catch (Exception e) {
+
             return new ArrayList<>();
         }
     }

@@ -34,7 +34,7 @@ public class Main {
 
                 switch (choice) {
 
-                    // ================= ADD STUDENT =================
+                    // Add Student
                     case 1:
 
                         System.out.print("Enter Student ID: ");
@@ -73,8 +73,7 @@ public class Main {
 
                         if (!service.isValidYear(year)) {
                             System.out.println(
-                                    "Invalid year! Year must be between 1 and 4."
-                            );
+                                    "Invalid year! Year must be between 1 and 4.");
                             break;
                         }
 
@@ -83,8 +82,7 @@ public class Main {
 
                         if (!service.isValidCgpa(cgpa)) {
                             System.out.println(
-                                    "Invalid CGPA! CGPA must be between 0 and 10."
-                            );
+                                    "Invalid CGPA! CGPA must be between 0 and 10.");
                             break;
                         }
 
@@ -93,31 +91,26 @@ public class Main {
                                 name,
                                 department,
                                 year,
-                                cgpa
-                        );
+                                cgpa);
 
                         boolean added = service.addStudent(student);
 
                         if (added) {
-                            System.out.println(
-                                    "Student Added Successfully."
-                            );
+                            System.out.println("Student Added Successfully.");
                         } else {
-                            System.out.println(
-                                    "Student ID already exists."
-                            );
+                            System.out.println("Student ID already exists.");
                         }
 
                         break;
 
-                    // ================= DISPLAY STUDENTS =================
+                    // Display Students
                     case 2:
 
                         service.displayStudents();
 
                         break;
 
-                    // ================= SEARCH STUDENT =================
+                    // Search Student
                     case 3:
 
                         System.out.print("Enter Student ID: ");
@@ -134,7 +127,7 @@ public class Main {
 
                         break;
 
-                    // ================= UPDATE STUDENT =================
+                    // Update Student
                     case 4:
 
                         System.out.print("Enter Student ID to Update: ");
@@ -162,9 +155,7 @@ public class Main {
                         String newDepartment = sc.nextLine();
 
                         if (newDepartment.trim().isEmpty()) {
-                            System.out.println(
-                                    "Department cannot be empty."
-                            );
+                            System.out.println("Department cannot be empty.");
                             break;
                         }
 
@@ -173,8 +164,7 @@ public class Main {
 
                         if (!service.isValidYear(newYear)) {
                             System.out.println(
-                                    "Invalid year! Year must be between 1 and 4."
-                            );
+                                    "Invalid year! Year must be between 1 and 4.");
                             break;
                         }
 
@@ -183,8 +173,7 @@ public class Main {
 
                         if (!service.isValidCgpa(newCgpa)) {
                             System.out.println(
-                                    "Invalid CGPA! CGPA must be between 0 and 10."
-                            );
+                                    "Invalid CGPA! CGPA must be between 0 and 10.");
                             break;
                         }
 
@@ -193,20 +182,17 @@ public class Main {
                                 newName,
                                 newDepartment,
                                 newYear,
-                                newCgpa
-                        );
+                                newCgpa);
 
                         if (updated) {
-                            System.out.println(
-                                    "Student Updated Successfully."
-                            );
+                            System.out.println("Student Updated Successfully.");
                         } else {
                             System.out.println("Update Failed.");
                         }
 
                         break;
 
-                    // ================= DELETE STUDENT =================
+                    // Delete Student
                     case 5:
 
                         System.out.print("Enter Student ID to Delete: ");
@@ -217,63 +203,70 @@ public class Main {
 
                         if (deleted) {
                             System.out.println(
-                                    "Student Deleted Successfully."
-                            );
+                                    "Student Deleted Successfully.");
                         } else {
                             System.out.println("Student Not Found.");
                         }
 
                         break;
-                        case 6:
 
-                         System.out.println("Total Students: "+ service.getStudentCount());
+                    // Total Students
+                    case 6:
+
+                        System.out.println(
+                                "Total Students: "
+                                        + service.getStudentCount());
+
                         break;
 
-                    // ================= EXIT =================
+                    // Sort Students by CGPA
                     case 7:
 
-                    service.sortStudentsByCgpa();
+                        service.sortStudentsByCgpa();
 
-                    break;
+                        break;
+
+                    // Filter Students by Department
                     case 8:
 
-    sc.nextLine();
+                        sc.nextLine();
 
-    System.out.print("Enter Department: ");
+                        System.out.print("Enter Department: ");
 
-    String dept = sc.nextLine();
+                        String dept = sc.nextLine();
 
-    service.filterByDepartment(dept);
+                        service.filterByDepartment(dept);
 
-    break;           
+                        break;
+
+                    // Generate Report
                     case 9:
 
-    service.generateReport();
+                        service.generateReport();
 
-    break;
+                        break;
+
+                    // Exit
                     case 10:
 
                         System.out.println(
-                                "Thank You for using Student Management System!"
-                        );
+                                "Thank You for using Student Management System!");
 
                         sc.close();
-                        return;
-                    
 
-                    // ================= INVALID CHOICE =================
+                        return;
+
+                    // Invalid Choice
                     default:
 
                         System.out.println(
-                                "Invalid Choice! Please choose between 1 and 7."
-                        );
+                                "Invalid Choice! Please choose between 1 and 10.");
                 }
 
             } catch (InputMismatchException e) {
 
                 System.out.println(
-                        "Invalid Input! Please enter the correct data type."
-                );
+                        "Invalid Input! Please enter the correct data type.");
 
                 sc.nextLine();
             }

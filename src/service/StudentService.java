@@ -164,4 +164,6 @@ public void generateReport() {
     System.out.println("Total Students: " + totalStudents);
     System.out.println("Average CGPA: " + averageCgpa);
 }
+
+
 }
