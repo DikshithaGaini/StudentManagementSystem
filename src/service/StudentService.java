@@ -143,4 +143,25 @@ public void filterByDepartment(String department) {
         System.out.println("No students found.");
     }
 }
+public void generateReport() {
+
+    if (studentList.isEmpty()) {
+        System.out.println("No students found.");
+        return;
+    }
+
+    int totalStudents = studentList.size();
+
+    double totalCgpa = 0;
+
+    for (Student student : studentList) {
+        totalCgpa += student.getCgpa();
+    }
+
+    double averageCgpa = totalCgpa / totalStudents;
+
+    System.out.println("\n========== STUDENT REPORT ==========");
+    System.out.println("Total Students: " + totalStudents);
+    System.out.println("Average CGPA: " + averageCgpa);
+}
 }
