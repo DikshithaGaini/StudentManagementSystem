@@ -1,178 +1,192 @@
-# Student Management System - README
+# 🎓 Student Management System
 
-## Student Management System
-
-A simple Java-based Student Management System that helps manage student records efficiently. This project allows users to add, view, search, update, and delete student information using a menu-driven interface.
+A console-based Java application for managing student records.
 
 ---
 
-## Features
+## 📌 Project Description
 
-* Add a student
-* View all students
-* Search for a student
-* Update student details
-* Delete a student record
-* Menu-driven console application
-* Object-Oriented Programming implementation
+The Student Management System is a Core Java project that allows users to manage student information through a menu-driven application.
+
+The system performs CRUD operations, validates user input, stores data in files, and generates student reports.
 
 ---
 
-## Technologies Used
+## ✨ Features
 
-* Java
-* OOP Concepts
-* Collections Framework
-* VS Code
-* Git and GitHub
+- ✅ Add Student
+- ✅ Display Students
+- ✅ Search Student
+- ✅ Update Student
+- ✅ Delete Student
+- ✅ Total Student Count
+- ✅ Sort Students by CGPA
+- ✅ Filter Students by Department
+- ✅ Generate Report
+- ✅ File Handling
+- ✅ Data Persistence
+- ✅ Exception Handling
+- ✅ Input Validation
 
 ---
 
-## Project Structure
+## 🛠 Technologies Used
+
+- Java
+- OOP
+- Collections (ArrayList)
+- Exception Handling
+- File Handling
+- Serialization
+- Git
+- GitHub
+- VS Code
+
+---
+
+## 📂 Project Structure
 
 ```text
-Student-Management-System/
+StudentManagementSystem
 │
-├── Student.java
-├── StudentManagement.java
-├── Main.java
+├── src
+│   ├── app
+│   │   └── Main.java
+│   │
+│   ├── model
+│   │   └── Student.java
+│   │
+│   ├── service
+│   │   └── StudentService.java
+│   │
+│   └── util
+│       └── FileUtil.java
+│
+├── students.dat
+├── screenshots
 └── README.md
 ```
 
 ---
 
-## Concepts Used
+## 📸 Screenshots
 
-* Classes and Objects
-* Encapsulation
-* Constructors
-* Methods
-* ArrayList
-* Loops
-* Conditional Statements
-* Exception Handling
+### Add Student
 
----
+(Add your screenshot here.)
 
-## How to Run the Project
+### Display Students
 
-1. Clone the repository.
+(Add your screenshot here.)
 
-```bash
-git clone <repository-url>
-```
+### Search Student
 
-2. Open the project in VS Code.
+(Add your screenshot here.)
 
-3. Compile the program.
+### Update Student
 
-```bash
-javac *.java
-```
+(Add your screenshot here.)
 
-4. Run the program.
+### Delete Student
 
-```bash
-java Main
-```
+(Add your screenshot here.)
+
+### Generate Report
+
+(Add your screenshot here.)
 
 ---
 
-## Sample Output
+## ▶️ How to Run
+
+Clone the repository:
+
+```bash
+git clone https://github.com/DikshithaGaini/StudentManagementSystem.git
+```
+
+Open the project in VS Code.
+
+Compile the program:
+
+```bash
+javac app/Main.java
+```
+
+Run the program:
+
+```bash
+java app.Main
+```
+
+---
+
+## 🧪 Sample Input
 
 ```text
-===== Student Management System =====
-
-1. Add Student
-2. View Students
-3. Search Student
-4. Update Student
-5. Delete Student
-6. Exit
-
-Enter your choice:
+1
+101
+Dikshitha
+IT
+4
+8.55
 ```
 
 ---
 
-## Daily Progress Tracker
+## 📊 Sample Output
+
+```text
+Student Added Successfully.
+```
+
+---
+
+## 🚀 Future Improvements
+
+- MySQL integration
+- JDBC
+- GUI using Java Swing
+- Export reports
+- Search by student name
+- Login system
+
+---
+
+## 📅 Daily Progress Tracker
 
 ### Day 1
 
-**Work Completed**
-
-* Created the project structure
-* Created the Student class
-* Added student attributes
-
-**Concepts Learned**
-
-* Classes
-* Objects
-* Constructors
-
-**Next Steps**
-
-* Implement the Add Student feature
-
----
+- Project setup
+- Student class
+- Add Student
 
 ### Day 2
 
-**Work Completed**
-
-* Implemented the Add Student feature
-* Added a menu-driven interface
-
-**Concepts Learned**
-
-* Methods
-* User input using Scanner
-
-**Next Steps**
-
-* Implement View Student functionality
-
----
+- Display Students
+- Search Student
+- Update Student
+- Delete Student
 
 ### Day 3
 
-**Work Completed**
+- Validation
+- Exception handling
+- File handling
 
-* Implemented the View Student feature
+### Day 4
 
-**Concepts Learned**
-
-* ArrayList
-* Enhanced for loop
-
-**Next Steps**
-
-* Implement Search Student functionality
+- Total Student Count
+- Sort by CGPA
+- Filter by Department
+- Generate Report
 
 ---
 
-## Future Improvements
+## 👩‍💻 Author
 
-* Database integration using MySQL
-* GUI implementation using JavaFX
-* Student attendance management
-* Student result management
-* Export student data
+**Dikshitha Gaini**
 
----
-## Day 4 — Student Statistics
+B.Tech (Information Technology)
 
-**Date:** August 15, 2026
-
-### Completed
-
-- Added Total Students feature
-- Improved the menu
-- Added student statistics
-
-### Concepts Learned
-
-- `ArrayList.size()`
-- Returning values from methods
-- `int` return type
+ACE Engineering College
