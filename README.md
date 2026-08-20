@@ -1,192 +1,92 @@
 # 🎓 Student Management System
 
-A console-based Java application for managing student records.
+A console-based **Student Management System** developed using **Java** and Object-Oriented Programming principles.
+
+The application allows users to manage student records efficiently through a menu-driven console interface. It supports CRUD operations, validation, exception handling, sorting, filtering, report generation, and persistent storage using Java serialization.
 
 ---
 
-## 📌 Project Description
+## 📌 Project Overview
 
-The Student Management System is a Core Java project that allows users to manage student information through a menu-driven application.
+The Student Management System is designed to simplify the management of student information.
 
-The system performs CRUD operations, validates user input, stores data in files, and generates student reports.
+The application allows users to:
 
----
+- Add new students
+- View all students
+- Search for students
+- Update student details
+- Delete students
+- Validate student information
+- Prevent duplicate student records
+- Sort students based on CGPA
+- Filter students by department
+- Generate student reports
+- Count total students
+- Save student data to a file
+- Load previously saved student data
 
-## ✨ Features
-
-- ✅ Add Student
-- ✅ Display Students
-- ✅ Search Student
-- ✅ Update Student
-- ✅ Delete Student
-- ✅ Total Student Count
-- ✅ Sort Students by CGPA
-- ✅ Filter Students by Department
-- ✅ Generate Report
-- ✅ File Handling
-- ✅ Data Persistence
-- ✅ Exception Handling
-- ✅ Input Validation
+This project was developed as part of my **Java placement preparation journey** to strengthen my understanding of Java, OOP, collections, exception handling, file handling, and project structure.
 
 ---
 
-## 🛠 Technologies Used
+## 🚀 Features
 
-- Java
-- OOP
-- Collections (ArrayList)
-- Exception Handling
-- File Handling
-- Serialization
-- Git
-- GitHub
-- VS Code
+### 1. Add Student
+
+Users can add a new student by entering:
+
+- Student ID
+- Student name
+- Age
+- Gender
+- Department
+- Year
+- CGPA
+
+The system validates the entered information before adding the student.
 
 ---
 
-## 📂 Project Structure
+### 2. View All Students
+
+Displays all registered students in the system.
+
+The information includes:
+
+- Student ID
+- Name
+- Age
+- Gender
+- Department
+- Year
+- CGPA
+
+---
+
+### 3. Search Student
+
+Students can be searched using their unique Student ID.
+
+---
+
+### 4. Update Student
+
+Existing student information can be updated using the Student ID.
+
+---
+
+### 5. Delete Student
+
+A student record can be removed using the Student ID.
+
+---
+
+### 6. Duplicate Student ID Validation
+
+The system does not allow two students to have the same Student ID.
+
+Example:
 
 ```text
-StudentManagementSystem
-│
-├── src
-│   ├── app
-│   │   └── Main.java
-│   │
-│   ├── model
-│   │   └── Student.java
-│   │
-│   ├── service
-│   │   └── StudentService.java
-│   │
-│   └── util
-│       └── FileUtil.java
-│
-├── students.dat
-├── screenshots
-└── README.md
-```
-
----
-
-## 📸 Screenshots
-
-### Add Student
-
-(Add your screenshot here.)
-
-### Display Students
-
-(Add your screenshot here.)
-
-### Search Student
-
-(Add your screenshot here.)
-
-### Update Student
-
-(Add your screenshot here.)
-
-### Delete Student
-
-(Add your screenshot here.)
-
-### Generate Report
-
-(Add your screenshot here.)
-
----
-
-## ▶️ How to Run
-
-Clone the repository:
-
-```bash
-git clone https://github.com/DikshithaGaini/StudentManagementSystem.git
-```
-
-Open the project in VS Code.
-
-Compile the program:
-
-```bash
-javac app/Main.java
-```
-
-Run the program:
-
-```bash
-java app.Main
-```
-
----
-
-## 🧪 Sample Input
-
-```text
-1
-101
-Dikshitha
-IT
-4
-8.55
-```
-
----
-
-## 📊 Sample Output
-
-```text
-Student Added Successfully.
-```
-
----
-
-## 🚀 Future Improvements
-
-- MySQL integration
-- JDBC
-- GUI using Java Swing
-- Export reports
-- Search by student name
-- Login system
-
----
-
-## 📅 Daily Progress Tracker
-
-### Day 1
-
-- Project setup
-- Student class
-- Add Student
-
-### Day 2
-
-- Display Students
-- Search Student
-- Update Student
-- Delete Student
-
-### Day 3
-
-- Validation
-- Exception handling
-- File handling
-
-### Day 4
-
-- Total Student Count
-- Sort by CGPA
-- Filter by Department
-- Generate Report
-
----
-
-## 👩‍💻 Author
-
-**Dikshitha Gaini**
-
-B.Tech (Information Technology)
-
-ACE Engineering College
+Student ID already exists!
