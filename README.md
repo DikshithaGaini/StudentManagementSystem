@@ -90,3 +90,33 @@ Example:
 
 ```text
 Student ID already exists!
+## 🔮 Next Phase — Version 2
+
+The Core Java version of the Student Management System is complete.
+
+The next phase will upgrade the application from file-based storage to a database-driven architecture.
+
+### 🗄️ MySQL + JDBC
+
+Planned tasks:
+
+- [ ] Set up MySQL
+- [ ] Create `student_management` database
+- [ ] Design `students` table
+- [ ] Configure JDBC
+- [ ] Create database connection utility
+- [ ] Create DAO layer
+- [ ] Implement database-based CRUD operations
+- [ ] Test MySQL integration
+- [ ] Update project architecture
+
+### 🎯 Goal
+
+Move from:
+
+```text
+Java Application
+       ↓
+ArrayList
+       ↓
+students.dat
