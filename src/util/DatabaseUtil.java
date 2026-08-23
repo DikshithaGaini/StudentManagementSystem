@@ -13,7 +13,7 @@ public class DatabaseUtil {
             "root";
 
     private static final String PASSWORD =
-            "123456";
+            "YOUR_MYSQL_PASSWORD";
 
     public static Connection getConnection() throws SQLException {
 
