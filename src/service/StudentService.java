@@ -1,6 +1,7 @@
 package service;
 
 import java.util.ArrayList;
+import dao.StudentDAO;
 
 import model.Student;
 import util.FileUtil;
@@ -8,38 +9,40 @@ import util.FileUtil;
 public class StudentService {
 
     private ArrayList<Student> studentList;
+private StudentDAO studentDAO;
 
-    // Constructor
-    public StudentService() {
-        studentList = FileUtil.loadStudents();
-    }
+public StudentService() {
+    studentDAO = new StudentDAO();
+}
+   
+    
 
     // Add Student
-    public boolean addStudent(Student student) {
+    // Add Student
+public boolean addStudent(Student student) {
 
-        if (idExists(student.getStudentId())) {
-            return false;
-        }
-
-        studentList.add(student);
-        FileUtil.saveStudents(studentList);
-
-        return true;
+    if (studentDAO.getStudentById(student.getStudentId()) != null) {
+        return false;
     }
+
+    return studentDAO.addStudent(student);
+}
 
     // Display All Students
     public void displayStudents() {
 
-        if (studentList.isEmpty()) {
-            System.out.println("No students found.");
-            return;
-        }
+    ArrayList<Student> students = studentDAO.getAllStudents();
 
-        for (Student student : studentList) {
-            System.out.println(student);
-            System.out.println("-------------------------");
-        }
+    if (students.isEmpty()) {
+        System.out.println("No students found.");
+        return;
     }
+
+    for (Student student : students) {
+        System.out.println(student);
+        System.out.println("-------------------------");
+    }
+}
 
     // Search Student by ID
     public Student searchStudent(int studentId) {
@@ -96,8 +99,8 @@ public class StudentService {
 
     // Check if Student ID already exists
     public boolean idExists(int studentId) {
-        return searchStudent(studentId) != null;
-    }
+    return studentDAO.getStudentById(studentId) != null;
+}
 
     // Validate Year
     public boolean isValidYear(int year) {
@@ -164,6 +167,7 @@ public void generateReport() {
     System.out.println("Total Students: " + totalStudents);
     System.out.println("Average CGPA: " + averageCgpa);
 }
+
 
 
 }
