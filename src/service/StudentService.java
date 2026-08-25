@@ -45,17 +45,11 @@ public boolean addStudent(Student student) {
 }
 
     // Search Student by ID
-    public Student searchStudent(int studentId) {
+    // Search Student by ID
+public Student searchStudent(int studentId) {
 
-        for (Student student : studentList) {
-
-            if (student.getStudentId() == studentId) {
-                return student;
-            }
-        }
-
-        return null;
-    }
+    return studentDAO.getStudentById(studentId);
+}
 
     // Update Student
     public boolean updateStudent(int studentId,
