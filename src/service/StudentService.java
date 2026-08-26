@@ -52,28 +52,26 @@ public Student searchStudent(int studentId) {
 }
 
     // Update Student
-    public boolean updateStudent(int studentId,
-                                 String studentName,
-                                 String department,
-                                 int year,
-                                 double cgpa) {
+    // Update Student
+public boolean updateStudent(int studentId,
+                             String studentName,
+                             String department,
+                             int year,
+                             double cgpa) {
 
-        Student student = searchStudent(studentId);
+    Student student = studentDAO.getStudentById(studentId);
 
-        if (student != null) {
-
-            student.setStudentName(studentName);
-            student.setDepartment(department);
-            student.setYear(year);
-            student.setCgpa(cgpa);
-
-            FileUtil.saveStudents(studentList);
-
-            return true;
-        }
-
+    if (student == null) {
         return false;
     }
+
+    student.setStudentName(studentName);
+    student.setDepartment(department);
+    student.setYear(year);
+    student.setCgpa(cgpa);
+
+    return studentDAO.updateStudent(student);
+}
 
     // Delete Student
     public boolean deleteStudent(int studentId) {
