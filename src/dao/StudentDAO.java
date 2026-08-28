@@ -157,4 +157,24 @@ public boolean deleteStudent(int studentId) {
         return false;
     }
 }
+public int getStudentCount() {
+
+    String sql = "SELECT COUNT(*) FROM students";
+
+    try (Connection connection = DatabaseUtil.getConnection();
+         PreparedStatement statement = connection.prepareStatement(sql);
+         ResultSet resultSet = statement.executeQuery()) {
+
+        if (resultSet.next()) {
+            return resultSet.getInt(1);
+        }
+
+    } catch (Exception e) {
+
+        System.out.println("Error counting students.");
+        e.printStackTrace();
+    }
+
+    return 0;
+}
 }

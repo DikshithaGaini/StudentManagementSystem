@@ -74,20 +74,11 @@ public boolean updateStudent(int studentId,
 }
 
     // Delete Student
-    public boolean deleteStudent(int studentId) {
+   // Delete Student
+public boolean deleteStudent(int studentId) {
 
-        Student student = searchStudent(studentId);
-
-        if (student != null) {
-
-            studentList.remove(student);
-            FileUtil.saveStudents(studentList);
-
-            return true;
-        }
-
-        return false;
-    }
+    return studentDAO.deleteStudent(studentId);
+}
 
     // Check if Student ID already exists
     public boolean idExists(int studentId) {
@@ -104,7 +95,7 @@ public boolean updateStudent(int studentId,
         return cgpa >= 0 && cgpa <= 10;
     }
     public int getStudentCount() {
-    return studentList.size();
+    return studentDAO.getStudentCount();
 }
 public void sortStudentsByCgpa() {
 
