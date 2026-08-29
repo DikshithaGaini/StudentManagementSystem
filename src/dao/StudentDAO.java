@@ -177,4 +177,35 @@ public int getStudentCount() {
 
     return 0;
 }
+public ArrayList<Student> getStudentsSortedByCgpa() {
+
+    ArrayList<Student> students = new ArrayList<>();
+
+    String sql = "SELECT * FROM students ORDER BY cgpa DESC";
+
+    try (Connection connection = DatabaseUtil.getConnection();
+         PreparedStatement statement = connection.prepareStatement(sql);
+         ResultSet resultSet = statement.executeQuery()) {
+
+        while (resultSet.next()) {
+
+            Student student = new Student(
+                    resultSet.getInt("student_id"),
+                    resultSet.getString("student_name"),
+                    resultSet.getString("department"),
+                    resultSet.getInt("year"),
+                    resultSet.getDouble("cgpa")
+            );
+
+            students.add(student);
+        }
+
+    } catch (Exception e) {
+
+        System.out.println("Error sorting students.");
+        e.printStackTrace();
+    }
+
+    return students;
+}
 }

@@ -99,15 +99,18 @@ public boolean deleteStudent(int studentId) {
 }
 public void sortStudentsByCgpa() {
 
-    if (studentList.isEmpty()) {
+    ArrayList<Student> students =
+            studentDAO.getStudentsSortedByCgpa();
+
+    if (students.isEmpty()) {
         System.out.println("No students found.");
         return;
     }
 
-    studentList.sort((s1, s2) ->
-            Double.compare(s2.getCgpa(), s1.getCgpa()));
-
-    displayStudents();
+    for (Student student : students) {
+        System.out.println(student);
+        System.out.println("-------------------------");
+    }
 }
 public void filterByDepartment(String department) {
 
