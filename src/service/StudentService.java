@@ -1,154 +1,140 @@
 package service;
 
 import java.util.ArrayList;
-import dao.StudentDAO;
 
+import dao.StudentDAO;
 import model.Student;
-import util.FileUtil;
 
 public class StudentService {
 
-    private ArrayList<Student> studentList;
-private StudentDAO studentDAO;
+    private StudentDAO studentDAO;
 
-public StudentService() {
-    studentDAO = new StudentDAO();
-}
-   
-    
-
-    // Add Student
-    // Add Student
-public boolean addStudent(Student student) {
-
-    if (studentDAO.getStudentById(student.getStudentId()) != null) {
-        return false;
+    public StudentService() {
+        studentDAO = new StudentDAO();
     }
 
-    return studentDAO.addStudent(student);
-}
+    // Add Student
+    public boolean addStudent(Student student) {
 
-    // Display All Students
+        if (studentDAO.getStudentById(student.getStudentId()) != null) {
+            return false;
+        }
+
+        return studentDAO.addStudent(student);
+    }
+
+    // Display Students
     public void displayStudents() {
 
-    ArrayList<Student> students = studentDAO.getAllStudents();
+        ArrayList<Student> students =
+                studentDAO.getAllStudents();
 
-    if (students.isEmpty()) {
-        System.out.println("No students found.");
-        return;
+        if (students.isEmpty()) {
+            System.out.println("No students found.");
+            return;
+        }
+
+        for (Student student : students) {
+            System.out.println(student);
+            System.out.println("-------------------------");
+        }
     }
 
-    for (Student student : students) {
-        System.out.println(student);
-        System.out.println("-------------------------");
+    // Search Student
+    public Student searchStudent(int studentId) {
+
+        return studentDAO.getStudentById(studentId);
     }
-}
-
-    // Search Student by ID
-    // Search Student by ID
-public Student searchStudent(int studentId) {
-
-    return studentDAO.getStudentById(studentId);
-}
 
     // Update Student
-    // Update Student
-public boolean updateStudent(int studentId,
-                             String studentName,
-                             String department,
-                             int year,
-                             double cgpa) {
+    public boolean updateStudent(int studentId,
+                                  String studentName,
+                                  String department,
+                                  int year,
+                                  double cgpa) {
 
-    Student student = studentDAO.getStudentById(studentId);
+        Student student =
+                studentDAO.getStudentById(studentId);
 
-    if (student == null) {
-        return false;
+        if (student == null) {
+            return false;
+        }
+
+        student.setStudentName(studentName);
+        student.setDepartment(department);
+        student.setYear(year);
+        student.setCgpa(cgpa);
+
+        return studentDAO.updateStudent(student);
     }
-
-    student.setStudentName(studentName);
-    student.setDepartment(department);
-    student.setYear(year);
-    student.setCgpa(cgpa);
-
-    return studentDAO.updateStudent(student);
-}
 
     // Delete Student
-   // Delete Student
-public boolean deleteStudent(int studentId) {
+    public boolean deleteStudent(int studentId) {
 
-    return studentDAO.deleteStudent(studentId);
-}
+        return studentDAO.deleteStudent(studentId);
+    }
 
-    // Check if Student ID already exists
+    // Check Student ID
     public boolean idExists(int studentId) {
-    return studentDAO.getStudentById(studentId) != null;
-}
+
+        return studentDAO.getStudentById(studentId) != null;
+    }
 
     // Validate Year
     public boolean isValidYear(int year) {
+
         return year >= 1 && year <= 4;
     }
 
     // Validate CGPA
     public boolean isValidCgpa(double cgpa) {
+
         return cgpa >= 0 && cgpa <= 10;
     }
+
+    // Total Students
     public int getStudentCount() {
-    return studentDAO.getStudentCount();
-}
-public void sortStudentsByCgpa() {
 
-    ArrayList<Student> students =
-            studentDAO.getStudentsSortedByCgpa();
-
-    if (students.isEmpty()) {
-        System.out.println("No students found.");
-        return;
+        return studentDAO.getStudentCount();
     }
 
-    for (Student student : students) {
-        System.out.println(student);
-        System.out.println("-------------------------");
-    }
-}
-public void filterByDepartment(String department) {
+    // Sort Students by CGPA
+    public void sortStudentsByCgpa() {
 
-    ArrayList<Student> students =
-            studentDAO.getStudentsByDepartment(department);
+        ArrayList<Student> students =
+                studentDAO.getStudentsSortedByCgpa();
 
-    if (students.isEmpty()) {
-        System.out.println("No students found.");
-        return;
-    }
+        if (students.isEmpty()) {
+            System.out.println("No students found.");
+            return;
+        }
 
-    for (Student student : students) {
-        System.out.println(student);
-        System.out.println("-------------------------");
-    }
-}
-public void generateReport() {
-
-    if (studentList.isEmpty()) {
-        System.out.println("No students found.");
-        return;
+        for (Student student : students) {
+            System.out.println(student);
+            System.out.println("-------------------------");
+        }
     }
 
-    int totalStudents = studentList.size();
+    // Filter Students by Department
+    public void filterByDepartment(String department) {
 
-    double totalCgpa = 0;
+        ArrayList<Student> students =
+                studentDAO.getStudentsByDepartment(department);
 
-    for (Student student : studentList) {
-        totalCgpa += student.getCgpa();
+        if (students.isEmpty()) {
+            System.out.println("No students found.");
+            return;
+        }
+
+        for (Student student : students) {
+            System.out.println(student);
+            System.out.println("-------------------------");
+        }
     }
 
-    double averageCgpa = totalCgpa / totalStudents;
+    // Generate Report
+    public void generateReport() {
 
-    System.out.println("\n========== STUDENT REPORT ==========");
-    System.out.println("Total Students: " + totalStudents);
-    System.out.println("Average CGPA: " + averageCgpa);
-}
-
-
-
+        studentDAO.generateReport();
+    }
 }

@@ -242,4 +242,28 @@ public ArrayList<Student> getStudentsByDepartment(String department) {
 
     return students;
 }
+public void generateReport() {
+
+    String sql = "SELECT COUNT(*), AVG(cgpa) FROM students";
+
+    try (Connection connection = DatabaseUtil.getConnection();
+         PreparedStatement statement = connection.prepareStatement(sql);
+         ResultSet resultSet = statement.executeQuery()) {
+
+        if (resultSet.next()) {
+
+            int totalStudents = resultSet.getInt(1);
+            double averageCgpa = resultSet.getDouble(2);
+
+            System.out.println("\n========== STUDENT REPORT ==========");
+            System.out.println("Total Students: " + totalStudents);
+            System.out.println("Average CGPA: " + averageCgpa);
+        }
+
+    } catch (Exception e) {
+
+        System.out.println("Error generating report.");
+        e.printStackTrace();
+    }
+}
 }
