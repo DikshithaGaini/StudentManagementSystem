@@ -114,22 +114,17 @@ public void sortStudentsByCgpa() {
 }
 public void filterByDepartment(String department) {
 
-    boolean found = false;
+    ArrayList<Student> students =
+            studentDAO.getStudentsByDepartment(department);
 
-    for (Student student : studentList) {
-
-        if (student.getDepartment()
-                .equalsIgnoreCase(department)) {
-
-            System.out.println(student);
-            System.out.println("-------------------------");
-
-            found = true;
-        }
+    if (students.isEmpty()) {
+        System.out.println("No students found.");
+        return;
     }
 
-    if (!found) {
-        System.out.println("No students found.");
+    for (Student student : students) {
+        System.out.println(student);
+        System.out.println("-------------------------");
     }
 }
 public void generateReport() {

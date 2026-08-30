@@ -13,7 +13,7 @@ public class DatabaseUtil {
             "root";
 
     private static final String PASSWORD =
-            "30";
+            "Dikshitha@30";
 
     public static Connection getConnection() throws SQLException {
 
