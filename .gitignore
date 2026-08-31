@@ -24,7 +24,7 @@ hs_err_pid*
 replay_pid*
 
 # MySQL credentials
-src/util/DatabaseUtil.java
+
 
 # Generated student data
 students.dat
