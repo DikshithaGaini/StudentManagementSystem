@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Management System</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <h1>🎓 SMS</h1>
+
+            <nav>
+                <a href="#" class="active">Dashboard</a>
+                <a href="#">Students</a>
+                <a href="#">Add Student</a>
+                <a href="#">Reports</a>
+            </nav>
+
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <header class="topbar">
+                <div>
+                    <h2>Dashboard</h2>
+                    <p>Welcome to Student Management System</p>
+                </div>
+            </header>
+
+
+            <!-- Statistics -->
+            <section class="stats">
+
+                <div class="card">
+                    <h3>Total Students</h3>
+                    <p id="totalStudents">0</p>
+                </div>
+
+                <div class="card">
+                    <h3>Average CGPA</h3>
+                    <p id="averageCgpa">0.00</p>
+                </div>
+
+                <div class="card">
+                    <h3>Departments</h3>
+                    <p id="totalDepartments">0</p>
+                </div>
+
+            </section>
+
+
+            <!-- Students -->
+            <section class="students-section">
+
+                <div class="section-header">
+                    <h2>Students</h2>
+
+                    <button id="addStudentBtn">
+                        + Add Student
+                    </button>
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Department</th>
+                                <th>Year</th>
+                                <th>CGPA</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="studentTableBody">
+
+                            <tr>
+                                <td colspan="6">
+                                    No students available
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>
